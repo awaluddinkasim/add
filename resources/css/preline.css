@@ -1,0 +1,33 @@
+
+
+/* Preline UI */
+@import "../../node_modules/preline/variants.css";
+@source "../../node_modules/preline/dist/*.js";
+
+/* Adds pointer cursor to buttons */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* Defaults hover styles on all devices */
+@custom-variant hover (&:hover);
+
+
+input, select, textarea {
+  @apply border;
+}
+
+.nav-link {
+  @apply flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-100 rounded-lg hover:bg-cyan-700 focus:outline-hidden focus:bg-cyan-700 transition duration-300;
+}
+
+.nav-link.active {
+  @apply bg-cyan-700;
+}
+
+.card {
+  @apply bg-white border border-gray-200 shadow-2xs rounded-xl p-4 md:p-5 dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70;
+}

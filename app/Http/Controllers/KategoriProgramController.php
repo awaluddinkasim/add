@@ -13,4 +13,22 @@ class KategoriProgramController extends Controller
             'daftarKategori' => KategoriProgram::all()
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'nama' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        KategoriProgram::create($data);
+
+        return back()->with('success', 'Kategori Program berhasil ditambahkan');
+    }
+
+    public function destroy(KategoriProgram $kategoriProgram)
+    {
+        $kategoriProgram->delete();
+        return back()->with('success', 'Kategori Program berhasil dihapus');
+    }
 }

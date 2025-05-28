@@ -10,7 +10,7 @@ return [
     'admin-only' => false,
   ],
   [
-    'active' => 'operators',
+    'active' => 'operator',
     'label' => 'Operator',
     'route-name' => 'operator',
     // 'route_params' => [],
@@ -66,7 +66,8 @@ return [
         'route-name' => 'pengeluaran-dana',
         // 'route_params' => [],
       ]
-    ]
+    ],
+    'admin-only' => false,
   ],
   [
     'active' => 'laporan',

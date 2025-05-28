@@ -21,7 +21,7 @@ class PenerimaanDanaSeeder extends Seeder
                 'tanggal_penerimaan' => now(),
                 'jumlah' => 500000000,
                 'keterangan' => 'Dana tahap pertama untuk program pendidikan',
-                'bukti_penerimaan' => 'bukti-penerimaan-1.pdf',
+                'bukti_penerimaan' => 'example.pdf',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

@@ -13,4 +13,35 @@ class SumberDanaController extends Controller
             'daftarSumberDana' => SumberDana::all()
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'nama' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        SumberDana::create($data);
+
+        return back()->with('success', 'Sumber Dana berhasil ditambahkan');
+    }
+
+    public function update(Request $request, SumberDana $sumberDana)
+    {
+        $data = $request->validate([
+            'nama' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $sumberDana->update($data);
+
+        return back()->with('success', 'Sumber Dana berhasil diubah');
+    }
+
+    public function destroy(SumberDana $sumberDana)
+    {
+        $sumberDana->delete();
+
+        return back()->with('success', 'Sumber Dana berhasil dihapus');
+    }
 }

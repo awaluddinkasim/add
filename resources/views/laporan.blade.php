@@ -1,28 +1,13 @@
 <x-layout title="Laporan">
     <div class="card">
-        <form action="#" method="POST" class="flex items-end space-x-4">
-            @csrf
-            <div class="w-1/3">
-                <label for="tahun_anggaran" class="block text-sm font-medium text-gray-700 mb-1">Tahun Anggaran</label>
-                <select id="tahun_anggaran" name="tahun_anggaran"
-                    class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">-- Pilih Tahun --</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                </select>
-            </div>
-
+        <form method="get" class="flex items-end justify-center space-x-4">
             <div class="w-1/3">
                 <label for="jenis_laporan" class="block text-sm font-medium text-gray-700 mb-1">Jenis Laporan</label>
-                <select id="jenis_laporan" name="jenis_laporan"
+                <select id="jenis_laporan" name="jenis"
                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">-- Pilih Jenis Laporan --</option>
+                    <option value="" hidden>-- Pilih Jenis Laporan --</option>
                     <option value="penerimaan">Laporan Penerimaan Dana</option>
                     <option value="pengeluaran">Laporan Pengeluaran Dana</option>
-                    <option value="realisasi">Laporan Realisasi Anggaran</option>
-                    <option value="rincian">Laporan Rincian Kegiatan</option>
                 </select>
             </div>
 
@@ -32,5 +17,7 @@
                 </button>
             </div>
         </form>
+
+        <img src="{{ asset('images/report.svg') }}" alt="" class="md:w-1/2 mx-auto">
     </div>
 </x-layout>

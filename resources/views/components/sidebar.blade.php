@@ -35,12 +35,13 @@
                     <ul class="space-y-1">
 
                         @foreach (config('menu') as $menu)
-                            {{-- @if ($menu['admin-only'] && auth()->user()->role != 'admin')
+                            @if ($menu['admin-only'] && auth()->guard('user')->check())
                                 @continue
-                            @endif --}}
+                            @endif
                             @isset($menu['submenu'])
                                 <li class="hs-accordion" id="account-accordion">
-                                    <button type="button" class="hs-accordion-toggle w-full text-start nav-link"
+                                    <button type="button"
+                                        class="hs-accordion-toggle w-full text-start nav-link @if (request()->segment(1) == $menu['active']) nav-active @endif"
                                         aria-expanded="true" aria-controls="account-accordion-sub-1-collapse-1">
                                         <i data-lucide="{{ $menu['icon'] }}" class="h-4 w-4"></i>
                                         {{ $menu['label'] }}
@@ -61,12 +62,12 @@
                                     </button>
 
                                     <div id="account-accordion-sub-1-collapse-1"
-                                        class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
+                                        class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 @if ($menu['active'] == request()->segment(1)) block @else hidden @endif"
                                         role="region" aria-labelledby="account-accordion">
                                         <ul class="pt-1 ps-7 space-y-1">
                                             @foreach ($menu['submenu'] as $submenu)
                                                 <li>
-                                                    <a class="nav-link"
+                                                    <a class="nav-link @if (request()->segment(2) == $menu['active'] && request()->segment(2) == $submenu['active']) bg-cyan-600 @endif"
                                                         href="{{ isset($submenu['route-name']) ? route($submenu['route-name']) : '#' }}">
                                                         {{ $submenu['label'] }}
                                                     </a>
@@ -77,7 +78,7 @@
                                 </li>
                             @else
                                 <li>
-                                    <a class="nav-link"
+                                    <a class="nav-link @if (request()->segment(1) == $menu['active']) nav-active @endif"
                                         href="{{ isset($menu['route-name']) ? route($menu['route-name']) : '#' }}">
                                         <i data-lucide="{{ $menu['icon'] }}" class="h-4 w-4"></i>
                                         {{ $menu['label'] }}

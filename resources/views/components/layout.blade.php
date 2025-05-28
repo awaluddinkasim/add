@@ -23,6 +23,25 @@
     </main>
 
     @stack('scripts')
+
+    @if (Session::has('success'))
+        <script type="module">
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: '{{ Session::get('success') }}',
+            })
+        </script>
+    @endif
+    @if (Session::has('error'))
+        <script type="module">
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: '{{ Session::get('error') }}',
+            })
+        </script>
+    @endif
 </body>
 
 </html>
